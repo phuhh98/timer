@@ -4,11 +4,64 @@
 		<meta charset="utf-8">
 		<title>Timer</title>
 		<link rel="stylesheet" type="text/css" href="./component.css">
+		<link rel="stylesheet" type="text/css" href="./layout.css">
+		<link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+
 	</head>
 	<body>
-		<div class="increase-button">
-			<img class="change-button" src="./images/play-button.svg">	
-		</div>
+		<div class="main-container">
+			<div class="title">timer</div>
+			<div class="timer">
+				<div class="function">
+					<div class="function-button" id="set">
+						Set
+					</div>
+					<div class="function-button" id="start-reset">
+						Start/Reset
+					</div>
+				</div>
 
+
+				<div class="hour time-box">
+					<div class="text" id="hour">00</div>
+					<div class="text">hr</div>
+					<div class="set-time-button">
+						<div class="increase button-container">
+							<img class="button" id="inc-hr" src="./images/play-button.svg">
+						</div>
+						<div class="decrease button-container">
+							<img class="button" id="dec-hr" src="./images/play-button.svg">
+						</div>
+					</div>	
+				</div>
+
+				<div class="minute time-box">
+					<div class="text" id="minute">00</div>
+					<div class="text">min</div>
+					<div class="set-time-button">
+						<div class="increase button-container">
+							<img class="button" id="inc-min" src="./images/play-button.svg">
+						</div>
+						<div class="decrease button-container">
+							<img class="button" id="dec-min" src="./images/play-button.svg">
+						</div>
+					</div>						
+				</div>
+
+				<div class="second time-box">
+					<div class="text" id="second">00</div>
+					<div class="text">sec</div>
+					<div class="set-time-button">
+						<div class="increase button-container">
+							<img class="button" id="inc-sec" src="./images/play-button.svg">
+						</div>
+						<div class="decrease button-container">
+							<img class="button" id="dec-sec" src="./images/play-button.svg">
+						</div>
+					</div>						
+				</div>
+			</div>
+
+		</div>
 	</body>
 </html>
