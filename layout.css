@@ -1,117 +1,104 @@
-.body {
-	display: relative;
-	background: aqua;
+body {
+	color: white;
+	display: flex;
+	background-repeat: none;
+	background-size: stretch;
+	background: linear-gradient(180deg, rgba(0,3,4,0.8) 0%, rgba(10,56,69,1) 20%, rgba(23,84,97,1) 49%, rgba(10,56,69,1) 80%, rgba(0,3,4,0.8) 100%);
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
-/*main-container box*/
-.main-container {
-	width: 750px;
-	height: 250px;
-	background: linear-gradient(291deg, rgba(205,196,15,0.7890173410404624) 26%, rgba(0,0,0,0.2716763005780347) 100%);
-	position: absolute;
-	top: 30%;
-	left: 30%;
-	border: 2px solid grey;
-	border-radius: 20px;
+.container {
+	font-family: 'Turret Road', cursive;
+	height: 700px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-family: Arial, sans-serif;
-}
-
-.main-container .title {
-	font-size: 80px;
-	text-transform: capitalize;
+	text-align: center;
 }
 
 
-/*functional parts*/
-/*adjust timer-box*/
+.header, .timer {
+	width: inherit;
+	max-width: 800px;
+}
+
+.header {
+	font-size: 50px;
+	text-align: inherit;
+	padding-left: 80px;
+	margin-bottom: 30px;
+}
+
 .timer {
-	width: 90%;
-	height: 100px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-
-
-/*set and start/reset buttons*/
-.function {
-	height: 70%;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-}
-.function .function-button {
-	width: 100%;
-	padding: 4px;
-	color: #23f584;
 	font-size: 20px;
-	border: 2px solid #9e7d7d;
-	border-radius: 20px;
-	background: linear-gradient(0deg, rgba(83,26,152,0.9855491329479769) 26%, rgba(0,0,0,0.5578034682080926) 100%);	box-shadow: 2px 2px 5px #61598496;
-}
-
-
-/*number, unit and increase-decrease  box*/
-.main-container .time-box {
-	width: 150px;
-	height: 100px;
-	border: 1px solid red;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+.timer .number {
+	font-size: 40px;
+}
+
+/*reset-start buttons*/
+.timer .reset-start {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
 
-/*adjust size of minute and second box*/
-.main-container .minute{
-	width: 170px;
+.reset-start .action-button {
+	width: 110px;
+	border: 2px solid white;
+	border-radius: 6px;
+	padding: 2px 0px;
+	margin: 4px 0px;
 }
-.main-container .second{
-	width: 170px;
-}
-
-/*adjust text inside time boxes*/
-.text {
-	color: #27261f;
-	font-size: 40px;
-	border: 2px solid #9e7d7d;
-	border-radius: 10px;
-	background: #BBB;
-	box-shadow: 2px 2px 5px #61598496;
-	flex-grow: 0.3;
-	text-align: center;
+.reset-start .action-button:active {
+	background-color: white;
+	color: black;
 }
 
-/*increase and decrease buttons*/
-.set-time-button {
-	height: 70%;
+/*show-box*/
+.timer .show-box {
+	padding-top: 30px;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.show-box .number {
+	grid-column-start:  1/2;
+	font-size: 90px;
+}
+
+
+/*increas-decrease buttons*/
+.button {
+	background-color: transparent;
+	color: white;
+	font-size: 20px;
+	border-radius: 8px;
+	border: 2px solid white;
+	margin: 4px 0px;
+	padding: 0px 2px;
+}
+
+.button:active {
+	background-color: white;
+	color: black;
+}
+
+.show-box .button-container {
+	padding-top: 9px;
+	padding-left: 6px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-}
-
-.set-time-button .decrease {
-	transform: rotateX(180deg);
-}
-
-/*increase and decrease buttons' containers*/
-.button-container {
-	border: 2px solid #191919;
-	border-radius: 7px;
-	background: #BBB;
-	box-shadow: 2px 2px 5px #61598496;
-}
-
-/*adjust increase and decreas button*/
-.button {
-	padding: 2px 2px 0px;
-	width: 25px;
-	height: 25px;
 }
