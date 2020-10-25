@@ -69,6 +69,7 @@ body {
 
 /*show-box*/
 .timer .show-box {
+	width: 150px;
 	padding-top: 30px;
 	display: grid;
 	grid-template-columns: auto auto;
@@ -78,7 +79,9 @@ body {
 	grid-column-start:  1/2;
 	font-size: 90px;
 }
-
+.show-box .unit {
+	width: 150px;
+}
 
 /*increas-decrease buttons*/
 .button {

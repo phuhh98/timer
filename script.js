@@ -11,15 +11,24 @@ function addEventToButton() {
 	}
 }
 
-function addNumber(){
+function getId(param) {
+	return param.target.id;
+}
+
+function addNumber(param){
+	let buttonId = getId(param);
+	let elementId = buttonId.slice(4);
+	let number = parseInt(document.getElementById(elementId).innerText) + 1;
+	number = check10(number);
+	renderNumber(elementId, number);
 
 }
 
-function minusNumber(){
+function minusNumber(param){
 
 }
 
-function renderNumber(elementById, number) {
+function renderNumber(elementId, number) {
 	document.getElementById(elementId).innerText = number;
 }
 
@@ -27,20 +36,30 @@ addEventToButton();
 
 //action-button
 document.getElementById("reset").addEventListener("click", reset);
-document.getElementById("start").addEventListener("click", start);
+document.getElementById("start").addEventListener("click", startAction);
+
+//use for defining action when start button clicked
 var startButton = {
 	state: "stop",
 }
 
+//set all number to 00
 function reset() {
 	var numbers =  document.getElementsByClassName("number");
 	for (let number of numbers) {
 		number.innerText = "00";
 	}
-
 }
 
-function start() {
+//action when click start button depend on startButton.state whether start or pause
+function startAction() {
+	if (startButton.state == "stop") {
+		startButton.state == "start";
+		countDown();
+	} else {
+		startButton.state = "pause";
+		pause();
+	}
 
 }
 

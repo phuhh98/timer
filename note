@@ -1,14 +1,3 @@
-id cua item
-
-set : set
-start/reset: start-reset;
-
-hour min sec text: #hour #minute #second
-
-hour's button : #inc-hr #dec-hr
-tuong tu voi min va sec:
-#inc-min	#dec-min	#inc-sec	#dec-sec
-
-need: script de chay timer
-
-transition animation cho cac button
+need:
+phan logic cho action buttons, button-minus
+va logic tich toan diem va render
