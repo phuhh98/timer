@@ -1,14 +1,4 @@
-//check a number that more then 10 or not 
-function check10(number) {
-	if (number < 10) {
-		return "0".concat(number);
-	} else {
-		return number;
-	}
-}
-
 //add event-listener to inc-dec buttons
-//inc-dec buttons
 function addEventToButton() {
 	var addButtons = document.getElementsByClassName("add");
 	var minusButtons = document.getElementsByClassName("minus");
@@ -20,11 +10,30 @@ function addEventToButton() {
 	}
 }
 
+addEventToButton();
+
+//add event listener to action-buttons
+document.getElementById("reset").addEventListener("click", reset);
+document.getElementById("start").addEventListener("click", start_pause);
+document.getElementById("mode").addEventListener("click", changeMode);
+
+
+//check a number that more then 10 or not for render
+function check10(number) {
+	if (number < 10) {
+		return "0".concat(number);
+	} else {
+		return number;
+	}
+}
+
 //get id of input event
 function getId(event) {
 	return event.target.id;
 }
 
+
+//action functions for inc-dec buttons
 function addNumber(event){
 	let buttonId = getId(event);
 	let elementId = buttonId.slice(4);
@@ -61,12 +70,14 @@ function minusNumber(event){
 	renderNumber(elementId, number);
 }
 
+//render numbers to html
 function renderNumber(elementId, number) {
 	document.getElementById(elementId).innerText = number;
 }
 
 
 //check sec and min if more than 59 than increase min and hr
+//relative connected timer to use for count function
 function checkMin(min) {
 	let hr = parseInt(document.getElementById("hr").innerText);
 	if (min > 59) {
@@ -112,15 +123,8 @@ function checkSec(sec) {
 	}
 }
 
-addEventToButton();
 
-//action-button
-document.getElementById("reset").addEventListener("click", reset);
-document.getElementById("start").addEventListener("click", start_pause);
-document.getElementById("mode").addEventListener("click", changeMode)
-
-
-//set all number to 00
+//reset button: set all num,ber to 00, clear timer interval and change pause to start
 function reset() {
 	var numbers =  document.getElementsByClassName("number");
 	for (let number of numbers) {
@@ -131,21 +135,10 @@ function reset() {
 	document.getElementById("start").innerText = "start";
 }
 
-//use for defining action when start button clicked
-var startState = "start"
-
+//startState and mode are used to define what counter have to do
+var startState = "start";
 var mode = "countdown";
-
-var timer;
-//start or pause timer
-function start_pause() {
-	let on = changeStartState();
-	if (on == true) {
-		timer = setInterval(count,990);
-	} else if (on == false) {
-		timer = clearInterval(timer);
-	}
-}
+var timer;  // initialize timer variable
 
 //change start state from start to pause and vice versa, return boolean to turn on and of the timer
 function changeStartState() {
@@ -171,7 +164,18 @@ function changeMode() {
 	}
 }
 
-//count function for both countdown and countup
+//start or pause timer
+function start_pause() {
+	let on = changeStartState();
+	if (on == true) {
+		timer = setInterval(count, 995);
+	} else if (on == false) {
+		timer = clearInterval(timer);
+	}
+}
+
+
+//count function for both countdown and countup base on click event on second's inc-dec buttons
 function count() {
 	if (mode == "countdown") {
 		countDown();
@@ -180,7 +184,7 @@ function count() {
 	}
 }
 
-//activate timer via activate the dec-sec div button
+//activate counter via trigger click event on second's inc-dec buttons
 function countDown() {
 	let sec = document.getElementById("sec").innerText;
 	let min = document.getElementById("min").innerText;

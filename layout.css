@@ -47,7 +47,7 @@ body {
 	font-size: 40px;
 }
 
-/*reset-start buttons*/
+/*reset-start and mode buttons*/
 .timer .reset-start {
 	display: flex;
 	flex-direction: column;
@@ -67,7 +67,7 @@ body {
 	color: black;
 }
 
-/*show-box*/
+/*timer out put box*/
 .timer .show-box {
 	width: 150px;
 	padding-top: 30px;
@@ -83,7 +83,7 @@ body {
 	width: 150px;
 }
 
-/*increas-decrease buttons*/
+/*increase-decrease buttons*/
 .button {
 	background-color: transparent;
 	color: white;
