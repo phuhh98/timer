@@ -1,4 +1,13 @@
-//add event listener to buttons
+//check a number that more then 10 or not 
+function check10(number) {
+	if (number < 10) {
+		return "0".concat(number);
+	} else {
+		return number;
+	}
+}
+
+//add event-listener to inc-dec buttons
 //inc-dec buttons
 function addEventToButton() {
 	var addButtons = document.getElementsByClassName("add");
@@ -11,25 +20,69 @@ function addEventToButton() {
 	}
 }
 
-function getId(param) {
-	return param.target.id;
+//get id of input event
+function getId(event) {
+	return event.target.id;
 }
 
-function addNumber(param){
-	let buttonId = getId(param);
+function addNumber(event){
+	let buttonId = getId(event);
 	let elementId = buttonId.slice(4);
 	let number = parseInt(document.getElementById(elementId).innerText) + 1;
+	switch (elementId) {
+		case "sec":
+			number = checkSec(number);
+			break;
+		case "min":
+			number = checkMin(number);
+			break;
+		default:
+			break;
+	}
 	number = check10(number);
 	renderNumber(elementId, number);
-
 }
 
-function minusNumber(param){
-
+function minusNumber(event){
+	let buttonId = getId(event);
+	let elementId = buttonId.slice(4);
+	let number = parseInt(document.getElementById(elementId).innerText) - 1;
+	if (number < 0) {
+		number = 59;
+	}
+	number = check10(number);
+	renderNumber(elementId, number);
 }
 
 function renderNumber(elementId, number) {
 	document.getElementById(elementId).innerText = number;
+}
+
+
+//check sec and min if more than 59 than increase min and hr
+function checkMin(min) {
+	if (min > 59) {
+		let hr = parseInt(document.getElementById("hr").innerText) + 1;
+		hr = check10(hr);
+		document.getElementById("hr").innerText = hr;
+		return 0;
+	} else {
+		return min;
+	}
+}
+
+function checkSec(sec) {
+	if (sec > 59) {
+		let min = parseInt(document.getElementById("min").innerText) + 1;
+		if (min > 60) {
+			min = checkMin(min);
+		}
+		min = check10(min);
+		document.getElementById("min").innerText = min;
+		return 0;
+	} else {
+		return sec;
+	}
 }
 
 addEventToButton();
@@ -61,14 +114,4 @@ function startAction() {
 		pause();
 	}
 
-}
-
-
-//check a number that more then 10 or not 
-function check10(number) {
-	if (number < 10) {
-		return "0".concat(number);
-	} else {
-		return number;
-	}
 }
