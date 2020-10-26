@@ -8,3 +8,4 @@ the functinality is base on relative connection between hour, minute and second
 and trigger by event click on UI button of second in script
 
 this timer have to mode: count up and count down
+hosting on firebase at https://timer-f8364.web.app/
