@@ -1,6 +1,11 @@
+/*set html and body tag height to 100%
+to have device's full height*/
+html, body {
+	height: 100%;
+}
+
 body {
 	color: white;
-	display: flex;
 	background-repeat: none;
 	background-size: stretch;
 	background: linear-gradient(180deg, rgba(0,3,4,0.8) 0%, rgba(10,56,69,1) 20%, rgba(23,84,97,1) 49%, rgba(10,56,69,1) 80%, rgba(0,3,4,0.8) 100%);
@@ -14,7 +19,7 @@ body {
 
 .container {
 	font-family: 'Turret Road', cursive;
-	height: 700px;
+	height: 100%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -43,9 +48,6 @@ body {
 	justify-content: space-around;
 }
 
-.timer .number {
-	font-size: 40px;
-}
 
 /*reset-start and mode buttons*/
 .timer .reset-start {
@@ -73,14 +75,16 @@ body {
 	padding-top: 30px;
 	display: grid;
 	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
 }
 
 .show-box .number {
-	grid-column-start:  1/2;
 	font-size: 90px;
+	grid-column-start: 1/2;
 }
 .show-box .unit {
-	width: 150px;
+	width: inherit;
+	grid-column-start: 1/2; 
 }
 
 /*increase-decrease buttons*/
@@ -104,4 +108,85 @@ body {
 	padding-left: 6px;
 	display: flex;
 	flex-direction: column;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+
+/*CSS setting for mobile*/
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) 
+and (orientation: portrait) {
+	.header {
+		padding: 0px;
+	}
+
+	/*change timer display to grid*/
+	.timer {
+		width: 98%;
+		display: grid;
+		grid-row: auto auto;
+		grid-column: auto auto auto;
+	}
+
+	.timer .reset-start {
+		padding-top: 20px; 
+		order: 4;
+		grid-column: 1/4;
+	}
+
+	.timer .second {
+		padding-right: 30px;
+	}
+
+	/*change show box from flex to grid*/
+	.timer .show-box {
+		width: 80px;
+		padding: 0px 0px 0px 0px;
+	}
+
+	.show-box .number {
+		width: 80px;
+		font-size: 60px;
+		padding-right: 3px;
+		text-align: center;
+	}
+
+	.show-box .unit {
+		text-align: inherit;
+	}
+
+	.show-box .button-container {
+		padding: 0px;
+	}
+	.button {
+		font-size: 18px;
+		border-radius: 8px;
+		border: 2px solid white;
+		margin: 4px 0px;
+		padding: 0px 3px;
+	}
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) 
+and (orientation: landscape) {
+	.show-box .number {
+		width: 140px;
+	}
+	.show-box .button-container {
+		padding: 0px;
+		padding-top: 10px;
+	}
+	.button {
+		font-size: 20px;
+		border-radius: 8px;
+		border: 2px solid white;
+		margin: 4px 0px;
+		padding: 0px 5px;
+	}
 }
