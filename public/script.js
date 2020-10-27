@@ -32,12 +32,25 @@ function getId(event) {
 	return event.target.id;
 }
 
+//render numbers to html
+function render(elementId, value) {
+	document.getElementById(elementId).innerText = value;
+}
+
+//get id value of numbers
+function getIdValue(elementId) {
+	return parseInt(document.getElementById(elementId).innerText);
+}
+
+function getIdElement(elementId) {
+	return document.getElementById(elementId);
+}
 
 //action functions for inc-dec buttons
 function addNumber(event){
 	let buttonId = getId(event);
 	let elementId = buttonId.slice(4);
-	let number = parseInt(document.getElementById(elementId).innerText) + 1;
+	let number = getIdValue(elementId) + 1;
 	switch (elementId) {
 		case "sec":
 			number = checkSec(number);
@@ -49,13 +62,13 @@ function addNumber(event){
 			break;
 	}
 	number = check10(number);
-	renderNumber(elementId, number);
+	render(elementId, number);
 }
 
 function minusNumber(event){
 	let buttonId = getId(event);
 	let elementId = buttonId.slice(4);
-	let number = parseInt(document.getElementById(elementId).innerText) - 1;
+	let number = getIdValue(elementId) - 1;
 	switch (elementId) {
 		case "sec":
 			number = checkSec(number);
@@ -63,27 +76,34 @@ function minusNumber(event){
 		case "min":
 			number = checkMin(number);
 			break;
+		case "hr":
+			number = checkHr(number);
+			break;
 		default:
 			break;
 	}
 	number = check10(number);
-	renderNumber(elementId, number);
+	render(elementId, number);
 }
 
-//render numbers to html
-function renderNumber(elementId, number) {
-	document.getElementById(elementId).innerText = number;
-}
 
 
 //check sec and min if more than 59 than increase min and hr
 //relative connected timer to use for count function
+function checkHr(hr) {
+	if (hr <= 0) {
+		return 0;
+	} else {
+		return hr;
+	}
+}
+
 function checkMin(min) {
-	let hr = parseInt(document.getElementById("hr").innerText);
+	let hr = getIdValue("hr");
 	if (min > 59) {
 		hr++;
 		hr = check10(hr);
-		document.getElementById("hr").innerText = hr;
+		render("hr",hr);
 		return 0;
 	} else if (min < 0) {
 		hr--;
@@ -91,7 +111,7 @@ function checkMin(min) {
 			hr = 0;
 		}
 		hr = check10(hr);
-		document.getElementById("hr").innerText = hr;
+		render("hr", hr);
 		return 59;
 	} else {
 		return min;
@@ -99,23 +119,23 @@ function checkMin(min) {
 }
 
 function checkSec(sec) {
-	let min = parseInt(document.getElementById("min").innerText);
+	let min = getIdValue("min");
+	let hr = getIdValue("hr");
 	if (sec > 59) {
 		min++;
 		min = checkMin(min);
 		min = check10(min);
-		document.getElementById("min").innerText = min;
+		render("min", min);
 		return 0;
 	} else if (sec < 0) {
-		if (min == 0) {
-			min = check10(min);
-			document.getElementById("min").innerText = min;
+		if (min === 0 && hr === 0) {
+			min = checkMin(min);
+			render("min", check10(min));
 			return 59;
 		} else {
 			min--;
 			min = checkMin(min);
-			min = check10(min);
-			document.getElementById("min").innerText = min;
+			render("min", check10(min));
 			return 59;			
 		}
 	} else {
@@ -132,7 +152,7 @@ function reset() {
 	}
 	timer = clearInterval(timer);
 	startState = "start";
-	document.getElementById("start").innerText = "start";
+	render("start", startState);
 }
 
 //startState and mode are used to define what counter have to do
@@ -144,11 +164,11 @@ var timer;  // initialize timer variable
 function changeStartState() {
 	if (startState == "start") {
 		startState = "pause";
-		document.getElementById("start").innerText = "pause";
+		render("start", startState);
 		return true;
 	} else if (startState == "pause") {
 		startState = "start";
-		document.getElementById("start").innerText = "start";
+		render("start", startState);
 		return false;
 	}
 }
@@ -157,10 +177,10 @@ function changeStartState() {
 function changeMode() {
 	if (mode == "countdown") {
 		mode = "countup";
-		document.getElementById("mode").innerText = "countup";
+		render("mode", mode);
 	} else if (mode == "countup") {
 		mode = "countdown";
-		document.getElementById("mode").innerText = "countdown";
+		render("mode", mode);
 	}
 }
 
@@ -186,19 +206,19 @@ function count() {
 
 //activate counter via trigger click event on second's inc-dec buttons
 function countDown() {
-	let sec = document.getElementById("sec").innerText;
-	let min = document.getElementById("min").innerText;
-	let hr = document.getElementById("hr").innerText;
+	let sec = getIdValue("sec");
+	let min = getIdValue("min");
+	let hr = getIdValue("hr");
 	if (sec == 0 && min == 0 & hr == 0) {
-		let startButton = document.getElementById("start");
+		let startButton = getIdElement("start");
 		startButton.click();
 	} else {
-		let decSecButton = document.getElementById("dec-sec");
+		let decSecButton = getIdElement("dec-sec");
 		decSecButton.click();
 	}
 }
 
 function countUp() {
-	let incSecButton = document.getElementById("inc-sec");
+	let incSecButton = getIdElement("inc-sec");
 	incSecButton.click();
 }
