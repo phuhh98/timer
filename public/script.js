@@ -188,7 +188,7 @@ function changeMode() {
 function start_pause() {
 	let on = changeStartState();
 	if (on == true) {
-		timer = setInterval(count, 995);
+		timer = setInterval(count, 999.812394205731);
 	} else if (on == false) {
 		timer = clearInterval(timer);
 	}
