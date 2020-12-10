@@ -1,10 +1,12 @@
-# timer
-A pet project to practice how to use html css and javascript
-to create a timer counter.
 
-the functinality is base on relative connection between hour, minute and second
-and trigger by event click on second button in script
+# Timer
+A project to practice html, css and javascript to create a time counter.
 
-this timer have to mode: countup and countdown
+This timer's working principle is base on relative connection between three units: hour, minute and second and trigger the timer by second button by javascript.
 
-hosting on firebase at https://timer-f8364.web.app/
+You can use this timer to count upward or downward
+
+![Timer](https://lh3.googleusercontent.com/6O8rIGkCINQ4ZOzMleOMs353spX_MycNaQVr48lK8L2IuSBZJzubDGuAfW4Er60AIK6hDdEx5eFPeek4CBQFQ5_NHH_HGziaTgT7tpHrztgrZddmYKOU1rvKuMMo4pUCa3ol7oZ2bA=w2400)
+
+
+Check out this app [here](https://timer-f8364.web.app/)
